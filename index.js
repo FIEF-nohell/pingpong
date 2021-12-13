@@ -4,7 +4,7 @@ const myChart = new Chart(ctx, {
     data: {
         datasets: [
         {   //red graph
-            label: 'ping to cloudflare',
+            label: 'ping to valorant',
             pointRadius: 0,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.0)'
@@ -14,7 +14,7 @@ const myChart = new Chart(ctx, {
             ],
             borderWidth: 1
         },{ //green graph
-            label: 'ping to google',
+            label: 'ping to cloudflare',
             pointRadius: 0,
             backgroundColor: [               
                 'rgba(99, 255, 132, 0.0)'
@@ -24,7 +24,7 @@ const myChart = new Chart(ctx, {
             ],
             borderWidth: 1
         },{//blue graph
-            label: 'ping to valorant',
+            label: 'ping to google',
             pointRadius: 0,
             backgroundColor: [               
                 'rgba(130, 160, 255, 0.0)'
@@ -92,7 +92,7 @@ window.addEventListener("keydown", function(event){
 
 function update_graph(graph){
     graph.data.datasets.forEach(set => {
-        set.data.push(rnd(10));
+        set.data.push(rnd(100));
         set.data.shift();
     }); 
     graph.update();
