@@ -61,37 +61,6 @@ function rnd(num){
     return Math.floor(Math.random() * num + 1);
 }
 
-document.getElementById("myChart").addEventListener("click", clickChart);
-
-let counter = 0;
-function clickChart(){
-    counter ++;
-    if(counter == 1){
-        myChart.data.datasets[0].backgroundColor = 'rgba(255, 99, 132, 0.2)';
-        myChart.data.datasets[1].backgroundColor = 'rgba(99, 255, 132, 0.0)';
-        myChart.data.datasets[2].backgroundColor = 'rgba(130, 160, 255, 0.0)';
-    }
-    else if(counter == 2){
-        myChart.data.datasets[0].backgroundColor = 'rgba(255, 99, 132, 0.0)';
-        myChart.data.datasets[1].backgroundColor = 'rgba(99, 255, 132, 0.2)';
-        myChart.data.datasets[2].backgroundColor = 'rgba(130, 160, 255, 0.0)';
-    }
-    else if(counter == 3){
-        myChart.data.datasets[0].backgroundColor = 'rgba(255, 99, 132, 0.0)';
-        myChart.data.datasets[1].backgroundColor = 'rgba(99, 255, 132, 0.0)';
-        myChart.data.datasets[2].backgroundColor = 'rgba(130, 160, 255, 0.2)';
-    }
-    else if(counter == 4){
-        myChart.data.datasets[0].backgroundColor = 'rgba(255, 99, 132, 0.0)';
-        myChart.data.datasets[1].backgroundColor = 'rgba(99, 255, 132, 0.0)';
-        myChart.data.datasets[2].backgroundColor = 'rgba(130, 160, 255, 0.0)';
-    }
-    else{
-        counter = 0;
-        clickChart();
-    }
-}
-
 function init(){
     myChart.data.datasets[0].data = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     myChart.data.datasets[1].data = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -99,8 +68,35 @@ function init(){
     myChart.data.labels = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 }
 
-function update_graph(graph){
+window.addEventListener("keydown", function(event){
+    if(event.key == "r"){
+        myChart.data.datasets[0].backgroundColor = 'rgba(255, 99, 132, 0.2)';
+        myChart.data.datasets[1].backgroundColor = 'rgba(99, 255, 132, 0.0)';
+        myChart.data.datasets[2].backgroundColor = 'rgba(130, 160, 255, 0.0)';
+    }
+    else if(event.key == "g"){
+        myChart.data.datasets[0].backgroundColor = 'rgba(255, 99, 132, 0.0)';
+        myChart.data.datasets[1].backgroundColor = 'rgba(99, 255, 132, 0.2)';
+        myChart.data.datasets[2].backgroundColor = 'rgba(130, 160, 255, 0.0)';
+    }
+    else if(event.key == "b"){
+        myChart.data.datasets[0].backgroundColor = 'rgba(255, 99, 132, 0.0)';
+        myChart.data.datasets[1].backgroundColor = 'rgba(99, 255, 132, 0.0)';
+        myChart.data.datasets[2].backgroundColor = 'rgba(130, 160, 255, 0.2)';
+    }
+    else if(event.key == "n"){
+        myChart.data.datasets[0].backgroundColor = 'rgba(255, 99, 132, 0.0)';
+        myChart.data.datasets[1].backgroundColor = 'rgba(99, 255, 132, 0.0)';
+        myChart.data.datasets[2].backgroundColor = 'rgba(130, 160, 255, 0.0)';
+    }
+    else if(event.key == "a"){
+        myChart.data.datasets[0].backgroundColor = 'rgba(255, 99, 132, 0.2)';
+        myChart.data.datasets[1].backgroundColor = 'rgba(99, 255, 132, 0.2)';
+        myChart.data.datasets[2].backgroundColor = 'rgba(130, 160, 255, 0.2)';
+    }
+}, true);
 
+function update_graph(graph){
     graph.data.datasets[0].data.push(rnd(100));
     graph.data.datasets[1].data.push(rnd(100));
     graph.data.datasets[2].data.push(rnd(100));
@@ -120,23 +116,3 @@ init();
 var intervalId = window.setInterval(function(){
     interval();
 }, 500);
-
-
-const Latenz = require('latenz');
-const l = new Latenz();
-
-l.measure('google.com').then(result => {
-  console.log(result);
-
-  /*
-    [
-      { key: 'resolve', time: 139 },
-      { key: 'socket', time: 2 },
-      { key: 'response', time: 286 },
-      { key: 'firstdata', time: 1 },
-      { key: 'end', time: 2 }
-    ]
-  */
-}).catch((e) => {
-  throw e;
-});
