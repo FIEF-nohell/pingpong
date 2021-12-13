@@ -62,10 +62,10 @@ function rnd(num){
 }
 
 function initialize_graph(){
-    myChart.data.datasets[0].data = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    myChart.data.datasets[1].data = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    myChart.data.datasets[2].data = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     myChart.data.labels = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    myChart.data.datasets.forEach(set => {
+        for(let i = 0; i < 20; i++) set.data.push(50)        
+    });
 }
 
 window.addEventListener("keydown", function(event){
