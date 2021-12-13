@@ -61,7 +61,7 @@ function rnd(num){
     return Math.floor(Math.random() * num + 1);
 }
 
-function init(){
+function initialize_graph(){
     myChart.data.datasets[0].data = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     myChart.data.datasets[1].data = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     myChart.data.datasets[2].data = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -71,17 +71,11 @@ function init(){
 window.addEventListener("keydown", function(event){
     if(event.key == "r"){
         myChart.data.datasets[0].backgroundColor = 'rgba(255, 99, 132, 0.2)';
-        myChart.data.datasets[1].backgroundColor = 'rgba(99, 255, 132, 0.0)';
-        myChart.data.datasets[2].backgroundColor = 'rgba(130, 160, 255, 0.0)';
     }
     else if(event.key == "g"){
-        myChart.data.datasets[0].backgroundColor = 'rgba(255, 99, 132, 0.0)';
         myChart.data.datasets[1].backgroundColor = 'rgba(99, 255, 132, 0.2)';
-        myChart.data.datasets[2].backgroundColor = 'rgba(130, 160, 255, 0.0)';
     }
     else if(event.key == "b"){
-        myChart.data.datasets[0].backgroundColor = 'rgba(255, 99, 132, 0.0)';
-        myChart.data.datasets[1].backgroundColor = 'rgba(99, 255, 132, 0.0)';
         myChart.data.datasets[2].backgroundColor = 'rgba(130, 160, 255, 0.2)';
     }
     else if(event.key == "n"){
@@ -97,22 +91,12 @@ window.addEventListener("keydown", function(event){
 }, true);
 
 function update_graph(graph){
-    graph.data.datasets[0].data.push(rnd(100));
-    graph.data.datasets[1].data.push(rnd(100));
-    graph.data.datasets[2].data.push(rnd(100));
-
-    graph.data.datasets[0].data.shift();
-    graph.data.datasets[1].data.shift();
-    graph.data.datasets[2].data.shift();
- 
+    graph.data.datasets.forEach(set => {
+        set.data.push(rnd(10));
+        set.data.shift();
+    }); 
     graph.update();
 }
 
-function interval(){
-    update_graph(myChart);
-}
-
-init();
-var intervalId = window.setInterval(function(){
-    interval();
-}, 500);
+initialize_graph();
+var invoke = window.setInterval(function(){update_graph(myChart);},500);
