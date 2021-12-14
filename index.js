@@ -57,6 +57,14 @@ const myChart = new Chart(ctx, {
     }
 });
 
+fetch('http://127.0.0.1:5500/google.txt')
+  .then(response => response.text())
+  .then((data) => {
+    console.log(data.search("time="));
+    console.log(data.slice(490))
+  })
+
+
 function rnd(num){
     return Math.floor(Math.random() * num + 1);
 }

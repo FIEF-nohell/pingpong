@@ -1,0 +1,19 @@
+
+
+
+This is hrPING v5.07.1148 by cFos Software GmbH -- http://www.cfos.de
+
+2021-12-14 09:15:08.205: google.com -t -T -F google.txt
+Source address is 192.168.200.232; using ICMP echo-request, ID=4453
+Pinging google.com [142.250.201.206]
+with 32 bytes data (60 bytes IP):
+
+setsockopt IP_HDRINCL failed: Error 10013: Der Zugriff auf einen Socket war aufgrund der Zugriffsrechte des Sockets unzul�ssig.
+2021-12-14 09:15:08.294: From 142.250.201.206: bytes=60 seq=0001 TTL=114 ID=0000 time=45.655ms
+2021-12-14 09:15:08.794: From 142.250.201.206: bytes=60 seq=0002 TTL=114 ID=0000 time=41.584ms
+2021-12-14 09:15:09.298: From 142.250.201.206: bytes=60 seq=0003 TTL=114 ID=0000 time=39.746ms
+2021-12-14 09:15:09.807: From 142.250.201.206: bytes=60 seq=0004 TTL=114 ID=0000 time=40.593ms
+2021-12-14 09:15:10.314: From 142.250.201.206: bytes=60 seq=0005 TTL=114 ID=0000 time=52.383ms
+2021-12-14 09:15:10.801: From 142.250.201.206: bytes=60 seq=0006 TTL=114 ID=0000 time=40.501ms
+2021-12-14 09:15:11.304: From 142.250.201.206: bytes=60 seq=0007 TTL=114 ID=0000 time=42.873ms
+2021-12-14 09:15:11.804: From 142.250.201.206: bytes=60 seq=0008 TTL=114 ID=0000 time=41.950ms
