@@ -5,10 +5,13 @@ import threading
 import math
 import os
 
-style.use("fivethirtyeight")
+style.use("dark_background")
 
 fig = plt.figure()
 ax1 = fig.add_subplot(1,1,1)
+frame1 = plt.gca()
+frame1.axes.get_xaxis().set_visible(False)
+plt.box(False)
 
 lines = ""
 dataY = [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50]
@@ -22,8 +25,8 @@ def checkLine(string):
 
 def addDummyNumberToArray():
     num = dataY[len(dataY)-1]
-    dataY.pop(0)
-    dataY.append(num)
+    dataY.pop(len(dataY)-1)
+    dataY.insert(0, num)
     with open('ping.txt', 'w') as f:
         for item in dataY:
             f.write(str(item) + "\n")
@@ -33,9 +36,9 @@ def addNumberToArray(string):
     string = string[time_spot:]
     ms_spot = string.find("ms")
     string = string[:ms_spot]
-    num = math.floor(float(string))
-    dataY.pop(0)
-    dataY.append(num)
+    num = float(string)
+    dataY.pop(len(dataY)-1)
+    dataY.insert(0, num)
     with open('ping.txt', 'w') as f:
         for item in dataY:
             f.write(str(item) + "\n")
@@ -55,19 +58,14 @@ def getData():
     else:
         addDummyNumberToArray()
 
-def printData():
-  threading.Timer(1.1, printData).start()
-  print("dataY: " + str(dataY))
-  
-
-getData()
-printData()
-
 def update(i):
     ax1.axis('auto')
     ax1.invert_xaxis()
     ax1.clear()
     ax1.plot(dataX,dataY)
 
-ani = animation.FuncAnimation(fig, update, interval=1000)
+ani = animation.FuncAnimation(fig, update, interval=500)
+
+
+getData()
 plt.show()
