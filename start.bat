@@ -1,1 +1,1 @@
-hrping.exe google.com -t -F -s 500 google.txt
+hrping.exe google.com -t -T -F google.txt
